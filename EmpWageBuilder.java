@@ -3,26 +3,30 @@ public class EmpWageComputaion{
 		{
 		int fullTime=1;
 		int partTime=2;	
-		int workHour;
+		int workHour=0;
 		int perHrWage=20;
-		double empCheck=(int)Math.floor(Math.random()*10)%3;		//multiplied by 10 because Math.random value is between 0 to 1
-		if (empCheck == fullTime)
+		int empCheck=(int)Math.floor(Math.random()*10)%3;		//multiplied by 10 because Math.random value is between 0 to 1
+		switch (empCheck)
 		{
-			System.out.println("Employee is working fulltime"+empCheck);
-			workHour=8;
-		}
-		else if (empCheck==partTime)
-		{
-			System.out.println("Employee is working Parttime"+empCheck);
-			workHour=4;
-		}
-		else
-		{
-			System.out.println("Employee is Abscent");
-			workHour=0;	
+		case 1:
+			System.out.println("Fulltime");
+			workHour=8
+			;
+			break;
+		case 2:
+			System.out.println("Parttime");
+			workHour=4
+			;
+			break;
+		case 0:
+			System.out.println("Abscent");
+			workHour=0
+			;
+			break;
+		default:
+			System.out.println("invalid");
 		}	
 		int dailyWage=workHour*perHrWage;
 		System.out.println("Daily Wage="+dailyWage);
 		}
 }
-
