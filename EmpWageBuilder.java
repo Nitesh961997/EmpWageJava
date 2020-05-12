@@ -14,43 +14,38 @@ class Register extends WorkVariables
 			System.out.println(empCheck+"  "+totalWorkHrs+"  "+daysWorked+"  "+days);
 			switch (empCheck)
 			{
-			case 1:
+			case fulltime:
 				System.out.println("Fulltime");
 				workHour=fulltimeHrs;
 				daysWorked=daysWorked+1;
 				days=days+1;
-				;
 				break;
-			case 2:
+			case parttime:
 				System.out.println("Parttime");
 				workHour=parttimeHrs;
 				daysWorked=daysWorked+1;
 				days=days+1;
-				;
 				break;
-			case 0:
+			case abscent:
 				System.out.println("Abscent");
 				workHour=abscentHrs;
 				days=days+1;
-				;
 				break;
-			default:
-				System.out.println("invalid");
 			}
 		
 		int dailyWage=workHour*perHrWage;
 		totalSalary=totalSalary+dailyWage;
 		totalWorkHrs=totalWorkHrs+workHour;
+		System.out.println("Total Salary="+ totalSalary);
 		}
-		System.out.println("Total Salary="+totalSalary);
 	}
 }
 	
 class WorkVariables
 {
-	int fulltime=1;
-	int abscent=0;
-	int parttime=2;
+	final int fulltime=1;
+	final int abscent=0;
+	final int parttime=2;
 	int parttimeHrs;
 	int fulltimeHrs;
 	int abscentHrs;
@@ -72,7 +67,7 @@ class WorkVariables
 public class EmpWageBuilder {
 	public static void main(String[] args)
 		{
-			Register observation=new Register();
-			observation.obs();
+			Register observed=new Register();
+			observed.obs();
 		}
 }
