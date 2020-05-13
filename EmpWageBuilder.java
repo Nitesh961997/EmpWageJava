@@ -1,43 +1,48 @@
 class Register extends WorkVariables
 {	
-	public void obs() 
+	public int obs(String s,int n, int d,int h) 
 	{
-		int days=1;
+		int days=0;
 		int totalWorkHrs=0;
 		int totalSalary=0;
 		int daysWorked=0;
 		int workHour=0;
-		int perHrWage=20;
+		int maxWorkHrs=h;
+		int perHrWage=n;
+		int maxdays=d;
+		int dailyWage;
+		
 		while(daysWorked<=maxdays && totalWorkHrs<=maxWorkHrs && days<=30 )
 		{
-			int empCheck=(int)Math.floor(Math.random()*10)%3;
+			int empCheck=(int)Math.floor(Math.random()*10)%3;						//class method 				
 			System.out.println(empCheck+"  "+totalWorkHrs+"  "+daysWorked+"  "+days);
 			switch (empCheck)
 			{
 			case fulltime:
-				System.out.println("Fulltime");
+				//System.out.println("Fulltime");
 				workHour=fulltimeHrs;
 				daysWorked=daysWorked+1;
 				days=days+1;
 				break;
 			case parttime:
-				System.out.println("Parttime");
+				//System.out.println("Parttime");
 				workHour=parttimeHrs;
 				daysWorked=daysWorked+1;
 				days=days+1;
 				break;
 			case abscent:
-				System.out.println("Abscent");
+				//System.out.println("Abscent");
 				workHour=abscentHrs;
 				days=days+1;
 				break;
 			}
 		
-		int dailyWage=workHour*perHrWage;
+		dailyWage=workHour*perHrWage;
 		totalSalary=totalSalary+dailyWage;
 		totalWorkHrs=totalWorkHrs+workHour;
-		System.out.println("Total Salary="+ totalSalary);
 		}
+		System.out.println("Total Salary"+s+"="+ totalSalary);
+		return totalSalary;
 	}
 }
 	
@@ -49,25 +54,22 @@ class WorkVariables
 	int parttimeHrs;
 	int fulltimeHrs;
 	int abscentHrs;
-	int perHrWage;
-	int maxdays;
-	int maxWorkHrs;
-	public WorkVariables()
+	public WorkVariables()	//instance method
 	{
 		fulltimeHrs=8;
 		abscentHrs=0;
-		perHrWage=20;
 		parttimeHrs=4;
-		maxdays=20;
-		maxWorkHrs=100;		
 		
-	}
+}
 }
 
 public class EmpWageBuilder {
 	public static void main(String[] args)
 		{
-			Register observed=new Register();
-			observed.obs();
+			Register companyOne=new Register();
+			companyOne.obs("companyOne",30,10,80);
+			Register companyTwo=new Register();
+			companyTwo.obs("companyTwo",20,20,100);
+			
 		}
 }
