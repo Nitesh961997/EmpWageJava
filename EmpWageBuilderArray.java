@@ -1,4 +1,3 @@
-
 import java.util.ArrayList; 
 class CompanyEmpWage
 {
@@ -35,13 +34,16 @@ public class EmpWageBuilderArray implements IComputeEmpWage
 {
 	public final int partTime=1;
 	public final int fullTime=2;
+	public int day=0;
+	//int dailWage[]=new int [20];
+	ArrayList<Integer> dailyWage=new ArrayList<Integer>();
 
 	public ArrayList<CompanyEmpWage> companyEmpWageArrayList;
 
 	public EmpWageBuilderArray () 
 	{
 		//companyEmpWageArray=new CompanyEmpWage[5];
-		 companyEmpWageArrayList = new ArrayList<CompanyEmpWage>();
+		 companyEmpWageArrayList = new  ArrayList<CompanyEmpWage>();
 		
 		
 	}
@@ -78,11 +80,16 @@ public class EmpWageBuilderArray implements IComputeEmpWage
 					break;
 				default:
 					empHrs=0;
+					//dailWage.add=companyEmpWage.empRatePerHour*empHrs;
 			}
+			int abc =empHrs*companyEmpWage.empRatePerHour;
+			dailyWage.add(abc);
+			//dailWage[day]=companyEmpWage.empRatePerHour*empHrs;
 			totalEmpHrs+=empHrs;
 			System.out.println("Day#:"+totalWorkingDays+"EmpHr:"+empHrs);	
 		}
-		return totalEmpHrs*companyEmpWage.empRatePerHour;
+		System.out.println(dailyWage);
+	return totalEmpHrs*companyEmpWage.empRatePerHour;
 	}
 	public static void main(String[] args)
 	{
@@ -90,7 +97,5 @@ public class EmpWageBuilderArray implements IComputeEmpWage
 		empWageBuilder.addCompanyEmpWage("Dmart",20,2,10);
 		empWageBuilder.addCompanyEmpWage("Reliance",10,4,20);
 		empWageBuilder.computeEmpWage();
-		
 	}
 }
-
