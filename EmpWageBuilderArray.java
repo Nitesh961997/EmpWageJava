@@ -1,4 +1,5 @@
- 
+
+import java.util.ArrayList; 
 class CompanyEmpWage
 {
 	public final String company;
@@ -28,30 +29,34 @@ interface IComputeEmpWage
 {
 	public void addCompanyEmpWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth);
 	public void computeEmpWage();
+	public int computeEmpWage(CompanyEmpWage companyEmpWage);
 }
 public class EmpWageBuilderArray implements IComputeEmpWage 
 {
 	public final int partTime=1;
 	public final int fullTime=2;
 
-	private int numOfCompany=0;
-	public CompanyEmpWage[] companyEmpWageArray;
+	public ArrayList<CompanyEmpWage> companyEmpWageArrayList;
 
 	public EmpWageBuilderArray () 
 	{
-		companyEmpWageArray=new CompanyEmpWage[5];
+		//companyEmpWageArray=new CompanyEmpWage[5];
+		 companyEmpWageArrayList = new ArrayList<CompanyEmpWage>();
+		
+		
 	}
 	public void addCompanyEmpWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
 	{
-		companyEmpWageArray[numOfCompany]=new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
-	numOfCompany=numOfCompany+1;
+		CompanyEmpWage companyEmpWage=new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
+		companyEmpWageArrayList.add(companyEmpWage);
 	}
 	public void computeEmpWage()
 	{
-		for (int i=0;i<numOfCompany;i++)
+		for (int i=0;i<companyEmpWageArrayList.size();i++)
 		{
-			companyEmpWageArray[i].setTotalEmpWage(this.computeEmpWage(companyEmpWageArray[i]));
-			System.out.println(companyEmpWageArray[i]);
+			
+			(companyEmpWageArrayList.get(i)).setTotalEmpWage(this.computeEmpWage(companyEmpWageArrayList.get(i)));
+			System.out.println(companyEmpWageArrayList.get(i));
 		}
 	}
 	public int computeEmpWage(CompanyEmpWage companyEmpWage)
@@ -88,3 +93,4 @@ public class EmpWageBuilderArray implements IComputeEmpWage
 		
 	}
 }
+
